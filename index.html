@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper, scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="rock-paper-scissors.js" defer></script></script>
 </head>
 <body>
-<script src="rock-paper-scissors.js">
-    
-</script>
+ <header>
+     <h1>ROCK PAPER SCISSORS</h1>
+ </header>
+
+ <div class="score-chart">
+     <div id="user" class="badge">Player</div> 
+     <div id="scores"> 
+         <span id="user-score"> 0</span> :
+         <span id="computer-score"> 0 </span>
+    </div>
+     <div id= "computer" class="badge"> Computer</div> 
+     
+ </div>
+
+<div class="round-result">
+    <p> Waiting for your first move... </p>
+</div>
+
+<div class="choices">
+    <button id="rock" class="choice">👊 </button>
+    <button id= "paper" class="choice">🤚</button>
+    <button id="scissors" class="choice">✌</button>
+</div>
+    <p id="message">Make your move!</p>
+
+<div id="end-screen">
+    <div id="end-screen-content"> 
+        <h1 id="end-title"> computer/player wins</h1>
+        <h2 id="end-message"> Do you want to play again? </h2>
+        <div id="button-replay" class="button" onclick="replay()">Play again</div>
+    </div>
+</div>
 </body>
 </html>

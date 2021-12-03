@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    background: rgb(243, 243, 141);
+}
+
+
+header {
+    background-color: black;
+    padding: 10px; 
+}
+
+header > h1{
+    color: white;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   
+}
+
+.score-chart {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 10px;
+    width: 300px;
+    border: 3px solid black;
+    margin: 30px auto;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    align-items: center;
+}
+
+.badge {
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.round-result, #message{
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.choices {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    
+    
+}
+
+.choice {
+    padding: 10px;
+    margin: 30px;
+    width: 120px;
+    height: 120px;
+    font-size: 60px;
+    border: 3px solid black;
+    border-radius: 100px;
+    color: white;
+    background-color: black;
+}
+
+.choice:hover {
+    border-color: blue;
+    cursor: pointer;
+}
+
+/*#end-screen {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    text-align: center;
+    margin-top: 80px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+    display: none;
+    
+    
+}
+*/
+#end-screen {
+    position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:#000;
+    opacity: 95%;
+	z-index:4;
+    display: none;
+}
+
+
+#end-screen-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
+    justify-content: center;
+}
+
+#end-title, #end-message, #button-replay {
+    
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#end-title {
+    margin-top: 80px;
+}
+
+#button-replay {
+    background-color:rgb(243, 243, 141);
+    color: black;
+    width: 100px;
+    padding: 10px;
+    border: 3px solid white;
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+#button-replay:hover {
+    cursor: pointer;
+    border-color: grey;
+
+}
+
+

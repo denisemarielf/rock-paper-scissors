@@ -1,14 +1,24 @@
-//Player and computer scores
+// Player and computer scores
+
 let playerPoints = 0;
 let computerPoints = 0;
 
-function playerScore(){
-    playerPoints++;
-}
+//Catching the DOM
 
-function computerScore(){
-    computerPoints++;
-}
+let playerPoints_span = document.getElementById("user-score");
+let computerPoints_span= document.getElementById("computer-score");
+let scoreChart_div = document.querySelector(".score-chart");
+let result_div = document.querySelector(".round-result");
+let rock_button = document.getElementById("rock");
+let paper_button = document.getElementById("paper");
+let scissors_button = document.getElementById("scissors");
+let endTitle_h1 = document.getElementById("end-title")
+let endMessage_h2 = document.getElementById("end-message")
+let message_p = document.getElementById("message");
+let resetButton = document.getElementById("button-replay");
+
+
+
 
 //Function computerPlay that randomly returns RPS
 
@@ -17,67 +27,74 @@ function computerPlay() {
     return randomRockPaperScissors[Math.floor(Math.random() * randomRockPaperScissors.length)];
 }
 
-//Function that gets the user input
+function win(userChoice, computerChoice){
+    playerPoints++;
+    playerPoints_span.innerHTML = playerPoints;
+    result_div.innerHTML = "You chose " + userChoice + " and computer chose " + computerChoice + ". You win this round!";
+}
 
-function getInputFromUser() {
-    
-    let playerInput = "";
-    while (playerInput !== "rock" || playerInput !== "paper" || playerInput !== "scissors") {
-    playerInput = prompt("Rock, paper, or scissors?").toLowerCase();
-        if (playerInput == "rock" || playerInput == "paper" || playerInput == "scissors") {
-            return(playerInput); 
-            } else {
-            alert("Not a valid option");}
-            }
-         }
+function lose(userChoice, computerChoice){
+    computerPoints++;
+    computerPoints_span.innerHTML = computerPoints;
+    result_div.innerHTML = "You chose " + userChoice + " and computer chose " + computerChoice + ". Computer wins this round!"
+}
 
-//Function that plays one round of the game
+function draw(userChoice, computerChoice){
+    result_div.innerHTML = "You chose " + userChoice + " and computer chose " + computerChoice + ". This round is tie!";
+}
 
-function playRound(getInputFromUser, computerPlay, playerScore, computerScore) {
-    
-    
-
-    if (getInputFromUser === computerPlay) {
-        return("You chose " + getInputFromUser + " and computer chose " + computerPlay + ". This round is tie!");
-    } else if (getInputFromUser == "rock" && computerPlay == "scissors" || getInputFromUser == "paper" && computerPlay == "rock" || getInputFromUser == "scissors" && computerPlay == "paper"){
-        playerPoints++;
-        playerScore; 
-        return("You chose " + getInputFromUser + " and computer chose " + computerPlay + ". You win this round!");
+function PlayRound(userChoice) {
+    let computerChoice = computerPlay();
+     if (userChoice === computerChoice) {
+        draw(userChoice, computerChoice);
+        endGame();
+        
+    } else if (userChoice == "rock" && computerChoice == "scissors" || userChoice == "paper" && computerChoice == "rock" || userChoice == "scissors" && computerChoice == "paper"){
+        win(userChoice, computerChoice);
+        endGame();
        
     } else {
-        computerPoints++;
-        computerScore;
-        return("You chose " + getInputFromUser + " and computer chose " + computerPlay + ". Computer wins this round!");
-        
+        lose(userChoice, computerChoice);
+        endGame();
     } 
 
 }
 
 
-//Function called game(). 
+function main() {
+rock_button.addEventListener('click', function () {
+    PlayRound("rock")
+} )
 
-function game() {
-    //play game 5 times
-    for (let i = 0; i < 5; i++) {
+paper_button.addEventListener('click', function () {
+    PlayRound("paper")
+} )
 
-        let playerSelection = getInputFromUser();
-        let computerSelection = computerPlay();
-        //Call playround function, passing in newly returned values from the playerPlay and computerplay functions
-        let currentRound = playRound(playerSelection, computerSelection);
+scissors_button.addEventListener('click', function () {
+    userInput = "scissors";
+    PlayRound("scissors")
+} )
 
-        //Log our result
-        console.log(currentRound);
-    }
-    
-    if (playerPoints > computerPoints) {
-        console.log("The result is: Player: "+ playerPoints + " Computer: " + computerPoints + ". You win the game!")
-    } else {
-        console.log("The result is: Player: "+ playerPoints + " Computer: " + computerPoints + ". Computer wins the game, sorry")
-    }
-    
-
-    
 }
 
+function endGame() {
+if (playerPoints === 5) {
+    
+    endTitle_h1.innerHTML = "You win the game, yay!";
+    document.getElementById('end-screen').style.display = "block";
+    
+    
 
-game();
+} else if (computerPoints === 5) {
+    
+    endTitle_h1.innerHTML = "You lose, computer wins the game. Sorry...";
+    document.getElementById('end-screen').style.display = "block";
+    
+
+}
+}
+
+function replay () {
+    location.reload();
+}
+    main();
